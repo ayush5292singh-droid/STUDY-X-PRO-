@@ -1,0 +1,185 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#080d1b">
+  <title>StudyX — Smart Study OS</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div id="toast" class="toast"></div>
+
+  <section id="onboarding" class="onboarding">
+    <div class="onboard-card">
+      <div class="brand-mark">S<span>X</span></div>
+      <p class="eyebrow">YOUR PERSONAL LEARNING SPACE</p>
+      <h1>Study smarter.<br><span>Become unstoppable.</span></h1>
+      <p class="muted">Your subjects, notes, revision, quizzes and goals—in one intelligent study space.</p>
+      <div class="onboard-progress"><i></i></div>
+      <form id="profileForm">
+        <label>Your name<input id="profileName" placeholder="Enter your name" required maxlength="40"></label>
+        <div class="two-col">
+          <label>Age<input id="profileAge" type="number" min="5" max="100" placeholder="Age" required></label>
+          <label>Class<input id="profileClass" placeholder="e.g. Class 8" required></label>
+        </div>
+        <label>Board
+          <select id="profileBoard">
+            <option>ICSE</option><option>CBSE</option><option>State Board</option>
+            <option>IB</option><option>Other</option>
+          </select>
+        </label>
+        <button class="btn primary full" type="submit">Create my StudyX space <span>→</span></button>
+      </form>
+      <p class="tiny muted">Your profile stays in this browser on this device.</p>
+    </div>
+  </section>
+
+  <div id="app" class="app hidden">
+    <aside id="sidebar" class="sidebar">
+      <div class="brand"><div class="brand-mark small">S<span>X</span></div><span>Study<span class="cyan">X</span></span></div>
+      <div class="side-label">WORKSPACE</div>
+      <nav id="sideNav">
+        <button data-page="dashboard" class="nav-item active">◈ <span>Dashboard</span></button>
+        <button data-page="planner" class="nav-item">▦ <span>Study planner</span></button>
+        <button data-page="flashcards" class="nav-item">▣ <span>Flashcards</span></button>
+        <button data-page="quiz" class="nav-item">✳ <span>Quiz lab</span></button>
+        <button data-page="notes" class="nav-item">▤ <span>Smart notes</span></button>
+        <button data-page="resources" class="nav-item">▷ <span>Video library</span></button>
+        <button data-page="focus" class="nav-item">◷ <span>Focus room</span></button>
+        <button data-page="exams" class="nav-item">⌁ <span>Exam countdown</span></button>
+        <button data-page="analytics" class="nav-item">⌁ <span>Analytics</span></button>
+        <button data-page="student" class="nav-item">▧ <span>Student ID</span></button>
+        <button data-page="membership" class="nav-item">✧ <span>Membership</span></button>
+        <button data-page="settings" class="nav-item">⚙ <span>Settings</span></button>
+      </nav>
+      <div class="sidebar-bottom">
+        <div class="mini-upgrade"><span class="sparkle">✦</span><b>Unlock your potential</b><p>Explore StudyX membership.</p><button data-page="membership" class="btn secondary full">Explore plans</button></div>
+        <button class="nav-item" id="profileShortcut">◎ <span>My profile</span></button>
+      </div>
+    </aside>
+
+    <main class="main">
+      <header class="topbar">
+        <button id="menuBtn" class="icon-btn" aria-label="Toggle menu">☰</button>
+        <div class="breadcrumb">StudyX <span>/</span> <b id="pageLabel">Dashboard</b></div>
+        <div class="top-actions">
+          <button class="icon-btn" id="themeBtn" aria-label="Toggle theme">☼</button>
+          <button class="profile-chip" id="topProfile"><span id="avatar">S</span><b id="topName">Student</b></button>
+        </div>
+      </header>
+
+      <div class="content">
+        <section id="page-dashboard" class="page active">
+          <div class="hero">
+            <div><p class="eyebrow">YOUR LEARNING COMMAND CENTER</p><h1 id="greeting">Let's make today count.</h1><p class="muted">Small steps. Strong habits. Real progress.</p>
+              <button class="btn primary" data-page="planner">Plan my study <span>→</span></button>
+            </div>
+            <div class="hero-orb"><div class="orb-inner">SX</div><span class="orb-dot one"></span><span class="orb-dot two"></span></div>
+          </div>
+          <div class="stats-grid">
+            <article class="stat-card"><div class="stat-icon cyan-bg">▦</div><p>Tasks completed</p><h2 id="statTasks">0 <small>/ 0</small></h2><div class="progress"><i id="taskProgress"></i></div></article>
+            <article class="stat-card"><div class="stat-icon violet-bg">▣</div><p>Flashcards created</p><h2 id="statCards">0</h2><span class="muted small-text">Build your memory bank</span></article>
+            <article class="stat-card"><div class="stat-icon pink-bg">◷</div><p>Focus minutes today</p><h2 id="statFocus">0</h2><span class="muted small-text">Every minute counts</span></article>
+            <article class="stat-card"><div class="stat-icon green-bg">✳</div><p>Quiz accuracy</p><h2 id="statAccuracy">—</h2><span class="muted small-text">From your quiz attempts</span></article>
+          </div>
+          <div class="section-heading"><div><p class="eyebrow">YOUR NEXT MOVE</p><h2>Study workspace</h2></div><span class="muted">Everything in one place</span></div>
+          <div class="workspace-grid">
+            <button class="workspace-card" data-page="flashcards"><span class="workspace-icon cyan-bg">▣</span><b>Flashcards</b><p>Recall, flip and revise</p><span class="card-arrow">↗</span></button>
+            <button class="workspace-card" data-page="quiz"><span class="workspace-icon violet-bg">✳</span><b>Quiz lab</b><p>Test your knowledge</p><span class="card-arrow">↗</span></button>
+            <button class="workspace-card" data-page="notes"><span class="workspace-icon pink-bg">▤</span><b>Smart notes</b><p>Capture key ideas</p><span class="card-arrow">↗</span></button>
+            <button class="workspace-card" data-page="resources"><span class="workspace-icon green-bg">▷</span><b>Video library</b><p>Keep lessons together</p><span class="card-arrow">↗</span></button>
+          </div>
+          <div class="dashboard-bottom">
+            <article class="panel"><div class="panel-heading"><div><p class="eyebrow">STAY CONSISTENT</p><h3>Today's tasks</h3></div><button class="text-btn" data-page="planner">View all ↗</button></div><div id="dashboardTasks" class="compact-list"></div></article>
+            <article class="panel quote-panel"><span class="quote-symbol">“</span><h3>Progress over perfection.</h3><p class="muted">You don't need to learn everything at once. Just start with the next small step.</p><div class="quote-line"></div><span class="eyebrow">YOUR STUDYX REMINDER</span></article>
+          </div>
+        </section>
+
+        <section id="page-planner" class="page">
+          <div class="page-intro"><p class="eyebrow">PLAN WITH PURPOSE</p><h1>Study planner<span class="cyan">.</span></h1><p class="muted">Turn your study goals into manageable actions.</p></div>
+          <div class="panel"><h3>Add a study task</h3><form id="taskForm" class="form-grid"><label>Task name<input id="taskTitle" placeholder="e.g. Revise algebra" required maxlength="100"></label><label>Subject<input id="taskSubject" placeholder="e.g. Mathematics" required maxlength="50"></label><label>Due date<input id="taskDate" type="date"></label><button class="btn primary" type="submit">＋ Add task</button></form></div>
+          <div class="section-heading"><h2>Your tasks</h2><span class="muted" id="taskCount"></span></div><div id="taskList" class="item-list"></div>
+        </section>
+
+        <section id="page-flashcards" class="page">
+          <div class="page-intro"><p class="eyebrow">ACTIVE RECALL</p><h1>Flashcard studio<span class="cyan">.</span></h1><p class="muted">Create cards and test what you remember.</p></div>
+          <div class="two-panels">
+            <div class="panel"><h3>Create a flashcard</h3><form id="flashForm" class="stack-form"><label>Subject<input id="flashSubject" placeholder="Biology" required></label><label>Question / front<textarea id="flashQuestion" placeholder="What is the function of..." required></textarea></label><label>Answer / back<textarea id="flashAnswer" placeholder="Write your answer..." required></textarea></label><button class="btn primary full">＋ Save flashcard</button></form></div>
+            <div class="panel study-panel"><div class="panel-heading"><h3>Recall practice</h3><span class="pill" id="cardPosition">0 cards</span></div><div id="studyCard" class="study-card"><div class="empty-state">Create a flashcard to begin your revision.</div></div><div class="card-controls"><button class="btn secondary" id="prevCard">← Previous</button><button class="btn primary" id="flipCard">Reveal answer</button><button class="btn secondary" id="nextCard">Next →</button></div><div class="card-controls"><button class="btn secondary" id="markHard">Need practice</button><button class="btn secondary" id="markKnown">I know this ✓</button></div></div>
+          </div>
+          <div class="section-heading"><h2>Your flashcard collection</h2></div><div id="flashList" class="item-list"></div>
+        </section>
+
+        <section id="page-quiz" class="page">
+          <div class="page-intro"><p class="eyebrow">PRACTICE. LEARN. IMPROVE.</p><h1>Quiz lab<span class="cyan">.</span></h1><p class="muted">Try a sample quiz or create your own multiple-choice questions.</p></div>
+          <div class="panel"><div class="panel-heading"><div><h3>Build your quiz bank</h3><p class="muted small-text">Add a question and four options.</p></div><span class="pill">Practice mode</span></div>
+            <form id="quizForm" class="stack-form"><label>Question<input id="quizQuestion" required placeholder="What is 7 × 8?"></label><div class="two-col"><label>Option A<input id="opt0" required placeholder="Option A"></label><label>Option B<input id="opt1" required placeholder="Option B"></label><label>Option C<input id="opt2" required placeholder="Option C"></label><label>Option D<input id="opt3" required placeholder="Option D"></label></div><label>Correct answer<select id="correctOption"><option value="0">Option A</option><option value="1">Option B</option><option value="2">Option C</option><option value="3">Option D</option></select></label><button class="btn primary">＋ Add question</button></form>
+          </div>
+          <div class="panel quiz-panel"><div class="panel-heading"><div><p class="eyebrow">TEST YOURSELF</p><h3>Practice session</h3></div><span class="pill" id="quizPosition">0 questions</span></div><div id="quizArea"><div class="empty-state">Add a question or load the sample quiz to get started.</div></div><div class="card-controls"><button id="sampleQuiz" class="btn secondary">Load sample quiz</button><button id="checkQuiz" class="btn primary">Check answer</button><button id="nextQuiz" class="btn secondary">Next question →</button></div><p id="quizFeedback" class="feedback"></p></div>
+          <div class="section-heading"><h2>Your question bank</h2></div><div id="quizList" class="item-list"></div>
+        </section>
+
+        <section id="page-notes" class="page">
+          <div class="page-intro"><p class="eyebrow">THINK. WRITE. REMEMBER.</p><h1>Smart notes<span class="cyan">.</span></h1><p class="muted">Organize your knowledge by subject and topic.</p></div>
+          <div class="panel"><form id="noteForm" class="stack-form"><label>Note title<input id="noteTitle" required placeholder="Chapter 3 — Human Skeleton"></label><label>Subject<input id="noteSubject" required placeholder="Biology"></label><label>Your notes<textarea id="noteBody" rows="7" required placeholder="Write your important points here..."></textarea></label><button class="btn primary">＋ Save note</button></form></div>
+          <div class="section-heading"><h2>Saved notes</h2><input id="noteSearch" class="search-input" placeholder="Search notes…"></div><div id="noteList" class="notes-grid"></div>
+        </section>
+
+        <section id="page-resources" class="page">
+          <div class="page-intro"><p class="eyebrow">YOUR PERSONAL LEARNING LIBRARY</p><h1>Video library<span class="cyan">.</span></h1><p class="muted">Save educational videos and useful websites.</p></div>
+          <div class="panel"><h3>Save a resource</h3><form id="resourceForm" class="stack-form"><label>Resource title<input id="resourceTitle" required placeholder="Algebra explained"></label><label>Video or website URL<input id="resourceUrl" type="url" required placeholder="https://www.youtube.com/watch?v=..."></label><label>Subject<input id="resourceSubject" placeholder="Mathematics"></label><button class="btn primary">＋ Save resource</button></form><p class="tiny muted">YouTube links open the video on YouTube. Other links open their website.</p></div>
+          <div class="section-heading"><h2>Saved resources</h2></div><div id="resourceList" class="item-list"></div>
+        </section>
+
+        <section id="page-focus" class="page">
+          <div class="page-intro"><p class="eyebrow">DEEP WORK MODE</p><h1>Focus room<span class="cyan">.</span></h1><p class="muted">One task. One session. Fewer distractions.</p></div>
+          <div class="focus-card"><div class="focus-orbit">FOCUS SESSION</div><div id="timerDisplay" class="timer">25:00</div><p id="timerStatus" class="muted">Ready when you are.</p><div class="timer-presets"><button class="btn secondary" data-minutes="15">15 min</button><button class="btn secondary selected" data-minutes="25">25 min</button><button class="btn secondary" data-minutes="45">45 min</button></div><div class="timer-actions"><button id="timerStart" class="btn primary">▶ Start focus</button><button id="timerPause" class="btn secondary">Ⅱ Pause</button><button id="timerReset" class="btn secondary">↻ Reset</button></div><p class="tiny muted">Completed focus time is counted when the timer finishes.</p></div>
+        </section>
+
+        <section id="page-exams" class="page">
+          <div class="page-intro"><p class="eyebrow">PREPARE WITH CONFIDENCE</p><h1>Exam countdown<span class="cyan">.</span></h1><p class="muted">Keep important dates visible and plan your revision.</p></div>
+          <div class="panel"><form id="examForm" class="form-grid"><label>Exam name<input id="examTitle" required placeholder="Half-yearly examinations"></label><label>Exam date<input id="examDate" type="date" required></label><button class="btn primary">＋ Add exam</button></form></div><div id="examList" class="exam-grid"></div>
+        </section>
+
+        <section id="page-analytics" class="page">
+          <div class="page-intro"><p class="eyebrow">SEE YOUR PROGRESS</p><h1>Learning analytics<span class="cyan">.</span></h1><p class="muted">A clear view of the activity you have recorded in StudyX.</p></div>
+          <div class="stats-grid"><article class="stat-card"><p>Tasks finished</p><h2 id="anaTasks">0</h2></article><article class="stat-card"><p>Cards created</p><h2 id="anaCards">0</h2></article><article class="stat-card"><p>Quiz accuracy</p><h2 id="anaAccuracy">—</h2></article><article class="stat-card"><p>Focus minutes</p><h2 id="anaFocus">0</h2></article></div>
+          <div class="panel"><div class="panel-heading"><h3>Study activity</h3><span class="pill">All-time overview</span></div><div id="analyticsBars" class="analytics-bars"></div><p class="tiny muted">These figures are based on your activity in this browser, not external school records.</p></div>
+        </section>
+
+        <section id="page-student" class="page">
+          <div class="page-intro"><p class="eyebrow">YOUR LEARNING IDENTITY</p><h1>Student ID<span class="cyan">.</span></h1><p class="muted">Personalize your student card and keep track of achievements.</p></div>
+          <div class="student-card"><div class="student-card-top"><div class="brand"><div class="brand-mark small">S<span>X</span></div><span>Study<span class="cyan">X</span></span></div><span class="pill">STUDENT</span></div><div class="student-avatar" id="studentAvatar">S</div><h2 id="studentName">Student Name</h2><p id="studentDetails">Class · Board</p><div class="student-card-bottom"><div><span class="tiny">STUDENT ID</span><b id="studentCode">SX-000001</b></div><span class="student-chip">✦ LEARNER</span></div></div>
+          <div class="panel"><h3>Profile and achievements</h3><form id="studentForm" class="stack-form"><label>Profile photo<input id="photoInput" type="file" accept="image/*"></label><label>School name<input id="schoolName" placeholder="Your school"></label><label>About me<textarea id="studentAbout" placeholder="Your learning goals and interests"></textarea></label><label>Add achievement<input id="achievementTitle" placeholder="e.g. Completed algebra revision"></label><button class="btn primary">Save profile / achievement</button></form><div id="achievementList" class="item-list"></div></div>
+        </section>
+
+        <section id="page-membership" class="page">
+          <div class="page-intro"><p class="eyebrow">YOUR NEXT LEVEL</p><h1>StudyX membership<span class="cyan">.</span></h1><p class="muted">Choose the style of membership that fits your learning journey.</p></div>
+          <div class="membership-grid">
+            <article class="membership-card free-card"><span class="plan-label">STARTER</span><h2>Free</h2><p>Get your study routine started.</p><div class="price">₹0 <small>/ forever</small></div><ul><li>✓ Study planner and notes</li><li>✓ Flashcards and quizzes</li><li>✓ Video resource library</li><li>✓ Local progress tracking</li></ul><button class="btn secondary full" data-plan="Free">Current plan</button></article>
+            <article class="membership-card gold-card"><span class="plan-label">GOLD</span><h2>Gold</h2><p>A brighter study experience.</p><div class="price">₹49 <small>/ month</small></div><ul><li>✓ Gold membership card</li><li>✓ Premium plan appearance</li><li>✓ Future premium feature access</li></ul><button class="btn gold-button full" data-plan="Gold">Choose Gold</button></article>
+            <article class="membership-card platinum-card"><span class="plan-label">PLATINUM PRO</span><h2>Platinum Pro</h2><p>For dedicated learners.</p><div class="price">Pro <small>membership</small></div><ul><li>✓ Platinum membership card</li><li>✓ Premium plan appearance</li><li>✓ Future advanced study tools</li></ul><button class="btn platinum-button full" data-plan="Platinum Pro">Explore Pro</button></article>
+          </div>
+          <p class="tiny muted">Important: membership selection here is a demo. It does not charge money or unlock paid services. Real payments require a secure payment provider and verified purchase system.</p>
+        </section>
+
+        <section id="page-settings" class="page">
+          <div class="page-intro"><p class="eyebrow">MAKE STUDYX YOURS</p><h1>Settings<span class="cyan">.</span></h1><p class="muted">Manage your local data and preferences.</p></div>
+          <div class="panel settings-list"><div><div><b>Export your data</b><p class="muted small-text">Download your StudyX data as a JSON backup.</p></div><button class="btn secondary" id="exportBtn">Export backup</button></div><div><div><b>Import backup</b><p class="muted small-text">Restore a previously exported StudyX JSON file.</p></div><label class="btn secondary file-button">Import file<input type="file" id="importInput" accept=".json,application/json"></label></div><div><div><b>Reset local data</b><p class="muted small-text">Permanently remove your saved data from this browser.</p></div><button class="btn danger" id="resetBtn">Reset data</button></div><div><div><b>Onboarding</b><p class="muted small-text">Return to the profile setup screen.</p></div><button class="btn secondary" id="restartOnboarding">Restart setup</button></div></div>
+        </section>
+      </div>
+      <footer class="footer"><span>StudyX <span class="cyan">●</span> Your learning space</span><span>Keep learning. Keep growing.</span></footer>
+    </main>
+    <nav class="mobile-nav">
+      <button data-page="dashboard" class="active"><span>◈</span>Home</button>
+      <button data-page="planner"><span>▦</span>Planner</button>
+      <button data-page="flashcards"><span>▣</span>Cards</button>
+      <button data-page="quiz"><span>✳</span>Quiz</button>
+      <button id="mobileMore"><span>☰</span>More</button>
+    </nav>
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>
